@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form </title>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+
+        class Form extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    pwd: ''
+                }
+                this.handleSubmit = this.handleSubmit.bind(this);
+                this.handleChange = this.handleChange.bind(this);
+
+            }
+            handleSubmit(event) {
+                //阻止表单提交；
+                event.preventDefault()
+
+                const toDoInput = this.toDoInput.value.trim();
+                const { pwd } = this.state;
+                // console.log(toDoInput);
+                // console.log(pwd)
+                alert(`Username is:${toDoInput} and Password is :${pwd}`)
+
+
+            }
+            handleChange(event) {
+                const pwd = event.target.value;
+                this.setState({ pwd });
+
+            }
+
+
+            render() {
+                return (
+                    <form action="/test" onSubmit={this.handleSubmit}>
+                        Username: <input type="text" ref={input => this.toDoInput = input} />
+                Password: <input type="Password" onChange={this.handleChange} />
+                        <input type="submit" value="Login" />
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Form />, document.getElementById('example'));
+
+    </script>
+</body>
+
+</html>
