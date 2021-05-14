@@ -48,7 +48,7 @@
                 return (
                     <form action="/test" onSubmit={this.handleSubmit}>
                         Username: <input type="text" ref={input => this.toDoInput = input} />
-                Password: <input type="Password" onChange={this.handleChange} />
+                Password: <input type="Password" value={this.state.pwd} onChange={this.handleChange} />
                         <input type="submit" value="Login" />
                     </form>
                 )
